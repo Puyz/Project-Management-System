@@ -1,4 +1,4 @@
-# ProjectManagementSystem
+# Project Management System
 
 ## Packages
 * FluentValidation 11.7.1
