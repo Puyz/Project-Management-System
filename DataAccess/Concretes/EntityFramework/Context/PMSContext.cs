@@ -2,7 +2,7 @@
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataAccess.Concrete.EntityFramework.Context
+namespace DataAccess.Concretes.EntityFramework.Context
 {
     public class PMSContext : DbContext
     {
