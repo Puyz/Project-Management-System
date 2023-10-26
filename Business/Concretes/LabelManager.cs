@@ -1,11 +1,16 @@
 ﻿using Business.Abstracts;
 using Core.Utilities.Results.Abstracts;
+using DataAccess.Abstracts;
 using Entities.Concretes;
 
 namespace Business.Concretes
 {
     public class LabelManager : ILabelService
     {
+        private readonly ILabelRepository _labelRepository;
+        public LabelManager(ILabelRepository labelRepository) {
+            _labelRepository = labelRepository;
+        }
         public IResult Add(Label label)
         {
             throw new NotImplementedException();

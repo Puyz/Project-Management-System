@@ -1,11 +1,17 @@
 ﻿using Business.Abstracts;
 using Core.Entities.Concretes;
 using Core.Utilities.Results.Abstracts;
+using DataAccess.Abstracts;
 
 namespace Business.Concretes
 {
     public class UserManager : IUserService
     {
+        private readonly IUserRepository _userRepository;
+        public UserManager(IUserRepository userRepository) 
+        {
+            _userRepository = userRepository;
+        }
         public IResult Add(User user)
         {
             throw new NotImplementedException();

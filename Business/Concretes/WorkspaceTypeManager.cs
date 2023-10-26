@@ -1,11 +1,17 @@
 ﻿using Business.Abstracts;
 using Core.Utilities.Results.Abstracts;
+using DataAccess.Abstracts;
 using Entities.Concretes;
 
 namespace Business.Concretes
 {
     public class WorkspaceTypeManager : IWorkspaceTypeService
     {
+        private readonly IWorkspaceTypeRepository _workspaceTypeRepository;
+        public WorkspaceTypeManager(IWorkspaceTypeRepository workspaceTypeRepository) 
+        {
+            _workspaceTypeRepository = workspaceTypeRepository;
+        }
         public IResult Add(WorkspaceType workspaceType)
         {
             throw new NotImplementedException();

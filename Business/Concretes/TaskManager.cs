@@ -1,10 +1,17 @@
 ﻿using Business.Abstracts;
 using Core.Utilities.Results.Abstracts;
+using DataAccess.Abstracts;
 
 namespace Business.Concretes
 {
     public class TaskManager : ITaskService
     {
+        private readonly ITaskRepository _taskRepository;
+
+        public TaskManager(ITaskRepository taskRepository)
+        {
+            _taskRepository = taskRepository;
+        }
         public IResult Add(Entities.Concretes.Task taskDto)
         {
             throw new NotImplementedException();

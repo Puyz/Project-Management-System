@@ -1,11 +1,18 @@
 ﻿using Business.Abstracts;
 using Core.Utilities.Results.Abstracts;
+using DataAccess.Abstracts;
 using Entities.Concretes;
 
 namespace Business.Concretes
 {
     public class TaskListManager : ITaskListService
     {
+        private readonly ITaskListRepository _taskListRepository;
+
+        public TaskListManager(ITaskListRepository taskListRepository)
+        {
+            _taskListRepository = taskListRepository;
+        }
         public IResult Add(TaskList taskList)
         {
             throw new NotImplementedException();

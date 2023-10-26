@@ -1,11 +1,17 @@
 ﻿using Business.Abstracts;
 using Core.Entities.Concretes;
 using Core.Utilities.Results.Abstracts;
+using DataAccess.Abstracts;
 
 namespace Business.Concretes
 {
     public class OperationClaimManager : IOperationClaimService
     {
+        private readonly IOperationClaimRepository _operationClaimRepository;
+        public OperationClaimManager(IOperationClaimRepository operationClaimRepository)
+        {
+            _operationClaimRepository = operationClaimRepository;
+        }
         public IResult Add(OperationClaim operationClaim)
         {
             throw new NotImplementedException();

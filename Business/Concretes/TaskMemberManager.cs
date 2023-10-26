@@ -1,12 +1,19 @@
 ﻿using Business.Abstracts;
 using Core.Entities.Concretes;
 using Core.Utilities.Results.Abstracts;
+using DataAccess.Abstracts;
 using Entities.Concretes;
 
 namespace Business.Concretes
 {
     public class TaskMemberManager : ITaskMemberService
     {
+        private readonly ITaskMemberRepository _taskMemberRepository;
+        public TaskMemberManager(ITaskMemberRepository taskMemberRepository)
+        {
+            _taskMemberRepository = taskMemberRepository;
+        }
+
         public IResult Add(List<int> userIds, int taskId)
         {
             throw new NotImplementedException();

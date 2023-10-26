@@ -1,11 +1,18 @@
 ﻿using Business.Abstracts;
 using Core.Utilities.Results.Abstracts;
+using DataAccess.Abstracts;
 using Entities.Concretes;
 
 namespace Business.Concretes
 {
     public class TaskLabelManager : ITaskLabelService
     {
+        private readonly ITaskLabelRepository _taskLabelRepository;
+        public TaskLabelManager(ITaskLabelRepository taskLabelRepository)
+        {
+            _taskLabelRepository = taskLabelRepository;
+        }
+
         public IResult Add(List<int> labelIds, int taskId)
         {
             throw new NotImplementedException();
