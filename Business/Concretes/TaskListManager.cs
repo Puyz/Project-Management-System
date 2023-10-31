@@ -2,6 +2,7 @@
 using Core.Utilities.Results.Abstracts;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using Entities.Dtos.TaskList;
 
 namespace Business.Concretes
 {
@@ -33,7 +34,7 @@ namespace Business.Concretes
             throw new NotImplementedException();
         }
 
-        public IDataResult<List<TaskList>> GetAllWithTasks(int boardId)
+        public IDataResult<List<TaskListViewDto>> GetAllWithTasks(int boardId)
         {
             throw new NotImplementedException();
         }
@@ -43,7 +44,7 @@ namespace Business.Concretes
             throw new NotImplementedException();
         }
 
-        public IResult UpdateOrder(int taskListId, int orderNo)
+        public IResult UpdateOrder(TaskListEditOrderDto taskListEditOrderDto)
         {
             throw new NotImplementedException();
         }

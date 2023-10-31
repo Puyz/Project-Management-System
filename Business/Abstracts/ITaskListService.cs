@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results.Abstracts;
 using Entities.Concretes;
+using Entities.Dtos.TaskList;
 
 namespace Business.Abstracts
 {
@@ -9,8 +10,8 @@ namespace Business.Abstracts
         IResult Delete(int taskListId);
         IResult DeleteAll(List<TaskList> taskLists);
         IResult Update(TaskList taskList);
-        IResult UpdateOrder(int taskListId, int orderNo);
+        IResult UpdateOrder(TaskListEditOrderDto taskListEditOrderDto);
         IDataResult<List<TaskList>> GetAllByBoardId(int boardId);
-        IDataResult<List<TaskList>> GetAllWithTasks(int boardId); // task list dto
+        IDataResult<List<TaskListViewDto>> GetAllWithTasks(int boardId);
     }
 }

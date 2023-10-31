@@ -1,7 +1,9 @@
 ﻿using Business.Abstracts;
 using Core.Utilities.Results.Abstracts;
+using Core.Utilities.Results.Concretes;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using Entities.Dtos.Board;
 
 namespace Business.Concretes
 {
@@ -23,19 +25,22 @@ namespace Business.Concretes
             throw new NotImplementedException();
         }
 
-        public IDataResult<Board> Get(int boardId)
+        public IDataResult<BoardViewDto> Get(int boardId)
         {
             throw new NotImplementedException();
         }
 
-        public IDataResult<List<Board>> GetAll(int workspaceId, int userId)
+        public IDataResult<List<BoardViewDto>> GetAll(int workspaceId, int userId)
         {
-            throw new NotImplementedException();
+            var result = _boardRepository.GetAll();
+            if (result == null) return new ErrorDataResult<List<BoardViewDto>>();
+            return new SuccessDataResult<List<BoardViewDto>>("Listelendi");
         }
 
         public IResult Update(Board board)
         {
             throw new NotImplementedException();
         }
+
     }
 }

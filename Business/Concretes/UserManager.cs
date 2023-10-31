@@ -2,6 +2,7 @@
 using Core.Entities.Concretes;
 using Core.Utilities.Results.Abstracts;
 using DataAccess.Abstracts;
+using Entities.Dtos;
 
 namespace Business.Concretes
 {
@@ -12,32 +13,28 @@ namespace Business.Concretes
         {
             _userRepository = userRepository;
         }
+
         public IResult Add(User user)
         {
             throw new NotImplementedException();
         }
 
-        public IDataResult<List<User>> GetAll()
+        public IDataResult<List<UserViewDto>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public IDataResult<User> GetByMail(string email)
+        public IDataResult<UserViewDto> GetByMail(string email)
         {
             throw new NotImplementedException();
         }
 
-        public IDataResult<List<User>> GetByName(string name)
+        public IDataResult<List<UserViewDto>> GetByName(string name)
         {
             throw new NotImplementedException();
         }
 
-        public List<OperationClaim> GetOperationClaims(User user, int workspaceId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IDataResult<User> GetUserById(long id)
+        public IDataResult<UserViewDto> GetUserById(long id)
         {
             throw new NotImplementedException();
         }

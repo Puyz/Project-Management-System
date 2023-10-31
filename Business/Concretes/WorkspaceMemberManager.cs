@@ -2,6 +2,7 @@
 using Core.Utilities.Results.Abstracts;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using Entities.Dtos.Workspace;
 
 namespace Business.Concretes
 {
@@ -12,6 +13,7 @@ namespace Business.Concretes
         {
             _workspaceMemberRepository = workspaceMemberRepository;
         }
+
         public IResult Add(List<WorkspaceMember> workspaceMembers)
         {
             throw new NotImplementedException();
@@ -27,12 +29,12 @@ namespace Business.Concretes
             throw new NotImplementedException();
         }
 
-        public IDataResult<List<WorkspaceMember>> GetAllByWorkspaceId(int workspaceId)
+        public IDataResult<List<WorkspaceMemberViewDto>> GetAllByWorkspaceId(int workspaceId)
         {
             throw new NotImplementedException();
         }
 
-        public IDataResult<List<WorkspaceMember>> GetAllByWorkspaceIdWithUsers(int boardId)
+        public IDataResult<List<WorkspaceMemberViewDto>> GetAllByWorkspaceIdWithUsers(int boardId)
         {
             throw new NotImplementedException();
         }

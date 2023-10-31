@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results.Abstracts;
 using Entities.Concretes;
+using Entities.Dtos.Task;
 
 namespace Business.Abstracts
 {
@@ -9,8 +10,8 @@ namespace Business.Abstracts
 
         IResult Delete(int taskCommentId);
 
-        IResult DeleteAll(List<TaskComment> taskComments); // dto
+        IResult DeleteAll(List<TaskCommentViewDto> taskComments);
 
-        IDataResult<List<TaskComment>> GetAllByTaskId(int taskId); // dto gelecek
+        IDataResult<List<TaskCommentViewDto>> GetAllByTaskId(int taskId);
     }
 }

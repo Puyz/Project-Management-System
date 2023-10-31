@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results.Abstracts;
 using Entities.Concretes;
+using Entities.Dtos.Board;
 
 namespace Business.Abstracts
 {
@@ -8,7 +9,7 @@ namespace Business.Abstracts
         IResult Add(Board board);
         IResult Delete(int boardId);
         IResult Update(Board board);
-        IDataResult<List<Board>> GetAll(int workspaceId, int userId);
-        IDataResult<Board> Get(int boardId);
+        IDataResult<List<BoardViewDto>> GetAll(int workspaceId, int userId);
+        IDataResult<BoardViewDto> Get(int boardId);
     }
 }

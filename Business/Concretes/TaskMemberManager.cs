@@ -1,8 +1,8 @@
 ﻿using Business.Abstracts;
-using Core.Entities.Concretes;
 using Core.Utilities.Results.Abstracts;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using Entities.Dtos;
 
 namespace Business.Concretes
 {
@@ -49,7 +49,7 @@ namespace Business.Concretes
             throw new NotImplementedException();
         }
 
-        public IDataResult<List<User>> GetTaskMembersAsUserByBoardId(int boardId)
+        public IDataResult<List<UserViewDto>> GetTaskMembersAsUserByBoardId(int boardId)
         {
             throw new NotImplementedException();
         }

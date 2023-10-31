@@ -1,6 +1,7 @@
 ﻿using Business.Abstracts;
 using Core.Utilities.Results.Abstracts;
 using DataAccess.Abstracts;
+using Entities.Dtos.Task;
 
 namespace Business.Concretes
 {
@@ -12,7 +13,7 @@ namespace Business.Concretes
         {
             _taskRepository = taskRepository;
         }
-        public IResult Add(Entities.Concretes.Task taskDto)
+        public IResult Add(AddTaskDto addTaskDto)
         {
             throw new NotImplementedException();
         }
@@ -32,17 +33,17 @@ namespace Business.Concretes
             throw new NotImplementedException();
         }
 
-        public IDataResult<Entities.Concretes.Task> GetById(int taskId)
+        public IDataResult<TaskViewDto> GetById(int taskId)
         {
             throw new NotImplementedException();
         }
 
-        public IResult Update(Entities.Concretes.Task taskDto)
+        public IResult Update(EditTaskDto editTaskDto)
         {
             throw new NotImplementedException();
         }
 
-        public IResult UpdateOrder(Entities.Concretes.Task taskOrderEditDto)
+        public IResult UpdateOrder(TaskOrderEditDto taskOrderEditDto)
         {
             throw new NotImplementedException();
         }

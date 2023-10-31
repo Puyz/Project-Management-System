@@ -1,6 +1,6 @@
-﻿using Core.Entities.Concretes;
-using Core.Utilities.Results.Abstracts;
+﻿using Core.Utilities.Results.Abstracts;
 using Entities.Concretes;
+using Entities.Dtos;
 
 namespace Business.Abstracts
 {
@@ -17,6 +17,6 @@ namespace Business.Abstracts
         IDataResult<List<TaskMember>> GetAllByTaskId(int taskId);
         IDataResult<List<int>> GetAllIdByTaskId(int taskId);
 
-        IDataResult<List<User>> GetTaskMembersAsUserByBoardId(int boardId); // user dto
+        IDataResult<List<UserViewDto>> GetTaskMembersAsUserByBoardId(int boardId);
     }
 }

@@ -2,6 +2,7 @@
 using Core.Utilities.Results.Abstracts;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using Entities.Dtos.Task;
 
 namespace Business.Concretes
 {
@@ -21,12 +22,12 @@ namespace Business.Concretes
             throw new NotImplementedException();
         }
 
-        public IResult DeleteAll(List<TaskComment> taskComments)
+        public IResult DeleteAll(List<TaskCommentViewDto> taskComments)
         {
             throw new NotImplementedException();
         }
 
-        public IDataResult<List<TaskComment>> GetAllByTaskId(int taskId)
+        public IDataResult<List<TaskCommentViewDto>> GetAllByTaskId(int taskId)
         {
             throw new NotImplementedException();
         }
