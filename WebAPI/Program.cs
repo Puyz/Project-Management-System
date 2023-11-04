@@ -13,7 +13,6 @@ builder.Services.AddSwaggerGen();
 
 
 // Autofac Module
-
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new AutofacBusinessModule()));
 

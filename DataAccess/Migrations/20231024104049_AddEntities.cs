@@ -38,7 +38,7 @@ namespace DataAccess.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     WorkspaceId = table.Column<int>(type: "int", nullable: false),
                     CreatedUserId = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "longtext", nullable: true),
+                    Name = table.Column<string>(type: "longtext", nullable: false),
                     PrivateToWorkspaceMember = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime(6)", nullable: false)

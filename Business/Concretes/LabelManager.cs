@@ -1,5 +1,6 @@
 ﻿using Business.Abstracts;
 using Core.Utilities.Results.Abstracts;
+using Core.Utilities.Results.Concretes;
 using DataAccess.Abstracts;
 using Entities.Concretes;
 
@@ -13,22 +14,33 @@ namespace Business.Concretes
         }
         public IResult Add(Label label)
         {
-            throw new NotImplementedException();
+            _labelRepository.Add(label);
+            return new SuccessResult("Etiket eklendi.");
         }
 
         public IResult Delete(int labelId)
         {
-            throw new NotImplementedException();
+            var result = _labelRepository.Get(l => l.Id.Equals(labelId));
+            if (result == null) return new ErrorResult("Silinecek etiket bulunamadı.");
+            _labelRepository.Delete(result);
+            return new SuccessResult("Etiket silindi.");
         }
 
         public IDataResult<List<Label>> GetAll()
         {
-            throw new NotImplementedException();
+            var result = _labelRepository.GetAll();
+            return new SuccessDataResult<List<Label>>(result);
         }
 
         public IResult Update(Label label)
         {
-            throw new NotImplementedException();
+            var result = _labelRepository.Get(l => l.Id.Equals(label.Id));
+            if (result == null) return new ErrorResult("Güncellenecek etiket bulunamadı.");
+
+            result.Name = label.Name;
+            result.Color = label.Color;
+            _labelRepository.Update(result);
+            return new SuccessResult("Etiket güncellendi.");
         }
     }
 }

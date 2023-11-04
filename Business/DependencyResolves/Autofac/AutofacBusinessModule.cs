@@ -2,6 +2,7 @@
 using Autofac.Extras.DynamicProxy;
 using Business.Abstracts;
 using Business.Concretes;
+using Business.File;
 using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
 using DataAccess.Abstracts;
@@ -13,6 +14,8 @@ namespace Business.DependencyResolves.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<FileManager>().As<IFileService>();
+
             builder.RegisterType<BoardMemberManager>().As<IBoardMemberService>();
             builder.RegisterType<EfBoardMemberRepository>().As<IBoardMemberRepository>();
 
@@ -39,6 +42,12 @@ namespace Business.DependencyResolves.Autofac
 
             builder.RegisterType<TaskMemberManager>().As<ITaskMemberService>();
             builder.RegisterType<EfTaskMemberRepository>().As<ITaskMemberRepository>();
+
+            builder.RegisterType<TaskTodoListManager>().As<ITaskTodoListService>();
+            builder.RegisterType<EfTaskTodoListRepository>().As<ITaskTodoListRepository>();
+
+            builder.RegisterType<TaskTodoManager>().As<ITaskTodoService>();
+            builder.RegisterType<EfTaskTodoRepository>().As<ITaskTodoRepository>();
 
             builder.RegisterType<TaskManager>().As<ITaskService>();
             builder.RegisterType<EfTaskRepository>().As<ITaskRepository>();

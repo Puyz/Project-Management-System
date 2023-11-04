@@ -26,6 +26,8 @@ namespace DataAccess.Concretes.EntityFramework.Context
         public DbSet<TaskLabel> TaskLabels { get; set; }
         public DbSet<TaskList> TaskLists { get; set; }
         public DbSet<TaskMember> TaskMembers { get; set; }
+        public DbSet<TaskTodoList> TaskTodoLists { get; set; }
+        public DbSet<TaskTodo> TaskTodos { get; set; }
         public DbSet<Workspace> Workspaces { get; set; }
         public DbSet<WorkspaceMember> WorkspaceMembers { get; set; }
         public DbSet<WorkspaceType> WorkspaceTypes { get; set; }
