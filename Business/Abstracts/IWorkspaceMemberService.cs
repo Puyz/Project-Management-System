@@ -9,7 +9,7 @@ namespace Business.Abstracts
         IResult Add(List<WorkspaceMember> workspaceMembers);
         IResult Delete(int workspaceMemberId);
         IResult DeleteAll(List<WorkspaceMember> workspaceMembers);
-        IDataResult<List<WorkspaceMemberViewDto>> GetAllByWorkspaceId(int workspaceId);
+        IDataResult<List<WorkspaceMember>> GetAllByWorkspaceId(int workspaceId);
         IDataResult<List<WorkspaceMemberViewDto>> GetAllByWorkspaceIdWithUsers(int boardId);
 
     }

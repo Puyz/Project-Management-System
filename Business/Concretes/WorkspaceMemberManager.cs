@@ -1,6 +1,8 @@
 ﻿using Business.Abstracts;
 using Core.Utilities.Results.Abstracts;
+using Core.Utilities.Results.Concretes;
 using DataAccess.Abstracts;
+using DataAccess.Concretes.EntityFramework;
 using Entities.Concretes;
 using Entities.Dtos.Workspace;
 
@@ -16,27 +18,42 @@ namespace Business.Concretes
 
         public IResult Add(List<WorkspaceMember> workspaceMembers)
         {
-            throw new NotImplementedException();
+            if ((workspaceMembers == null || !workspaceMembers.Any())) return new ErrorResult("Çalışma alanına atanacak kullanıcılar bulunamadı.");
+            foreach (var workspaceMember in workspaceMembers)
+            {
+                _workspaceMemberRepository.Add(workspaceMember);
+            }
+            return new SuccessResult("Çalışma alanına kullanıcılar atandı.");
         }
 
         public IResult Delete(int workspaceMemberId)
         {
-            throw new NotImplementedException();
+            var result = _workspaceMemberRepository.Get(p => p.Id.Equals(workspaceMemberId));
+            if (result == null) return new ErrorResult("Silmek için çalışma alanına atanmış kullanıcı bulunamadı.");
+            _workspaceMemberRepository.Delete(result);
+            return new SuccessResult("Çalışma alanına atanmış kullanıcı kaldırıldı.");
         }
 
         public IResult DeleteAll(List<WorkspaceMember> workspaceMembers)
         {
-            throw new NotImplementedException();
+            if ((workspaceMembers == null || !workspaceMembers.Any())) return new ErrorResult("Silmek için çalışma alanına atanmış kullanıcılar bulunamadı.");
+            foreach (var workspaceMember in workspaceMembers)
+            {
+                Delete(workspaceMember.Id);
+            }
+            return new SuccessResult();
         }
 
-        public IDataResult<List<WorkspaceMemberViewDto>> GetAllByWorkspaceId(int workspaceId)
+        public IDataResult<List<WorkspaceMember>> GetAllByWorkspaceId(int workspaceId)
         {
-            throw new NotImplementedException();
+            var result = _workspaceMemberRepository.GetAll(wm => wm.WorkspaceId.Equals(workspaceId));
+            return new SuccessDataResult<List<WorkspaceMember>>(result);
         }
 
-        public IDataResult<List<WorkspaceMemberViewDto>> GetAllByWorkspaceIdWithUsers(int boardId)
+        public IDataResult<List<WorkspaceMemberViewDto>> GetAllByWorkspaceIdWithUsers(int workspaceId)
         {
-            throw new NotImplementedException();
+            var result = _workspaceMemberRepository.GetAllByWorkspaceIdWithUsers(workspaceId);
+            return new SuccessDataResult<List<WorkspaceMemberViewDto>>(result);
         }
     }
 }

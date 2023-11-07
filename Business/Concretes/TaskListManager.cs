@@ -58,7 +58,7 @@ namespace Business.Concretes
         {
             var result = _taskListRepository.GetAll(p => p.BoardId.Equals(boardId));
             return (!(result == null || !result.Any())) ? new SuccessDataResult<List<TaskList>>(result)
-                : new ErrorDataResult<List<TaskList>>("Bu panoya bağlı task list yok");
+                : new ErrorDataResult<List<TaskList>>("Bu panoya bağlı task list yok.");
         }
 
         public IDataResult<List<TaskListViewDto>> GetAllWithTasks(int boardId)

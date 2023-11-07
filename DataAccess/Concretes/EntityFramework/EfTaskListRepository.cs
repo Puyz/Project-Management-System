@@ -19,7 +19,7 @@ namespace DataAccess.Concretes.EntityFramework
                               {
                                   Id = taskList.Id,
                                   BoardId = boardId,
-                                  Name = taskList.Name,
+                                  Name = taskList.Name!,
                                   OrderNo = taskList.OrderNo,
                                   Tasks = context.Tasks.Where(task => task.TaskListId == taskList.Id)
                                   .Select(task => new TaskViewForTaskListDto
@@ -27,7 +27,7 @@ namespace DataAccess.Concretes.EntityFramework
 
                                       Id = task.Id,
                                       TaskListId = taskList.Id,
-                                      Name = task.Name,
+                                      Name = task.Name!,
                                       AttachmentCount = context.TaskAttachments.Count(ta => ta.TaskId == task.Id),
                                       CommentCount = context.TaskComments.Count(tc => tc.TaskId == task.Id),
                                       OrderNo = task.OrderNo,
@@ -39,8 +39,8 @@ namespace DataAccess.Concretes.EntityFramework
                                                     {
                                                         Id = taskLabel.Id,
                                                         LabelId = label.Id,
-                                                        Name = label.Name,
-                                                        Color = label.Color,
+                                                        Name = label.Name!,
+                                                        Color = label.Color!,
                                                     }).ToList(),
                                       taskMembers = context.TaskMembers
                                                 .Where(taskMember => taskMember.TaskId == task.Id)
@@ -49,8 +49,8 @@ namespace DataAccess.Concretes.EntityFramework
                                                     {
                                                         Id = taskMember.Id,
                                                         UserId = user.Id,
-                                                        Name = user.Name,
-                                                        Email = user.Email,
+                                                        Name = user.Name!,
+                                                        Email = user.Email!,
                                                         Image = user.Image
                                                     })
                                                 .ToList()

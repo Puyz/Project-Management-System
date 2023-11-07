@@ -6,7 +6,7 @@ namespace DataAccess.Abstracts
 {
     public interface IBoardRepository : IEntityRepository<Board>
     {
-        List<BoardViewDto> GetAllBoards(int companyId, int userId);
+        List<BoardViewDto> GetAllBoards(int workspaceId, int userId);
         BoardViewDto GetBoard(int boardId);
     }
 }

@@ -54,9 +54,9 @@ namespace Business.Concretes
             return (result != null) ? new SuccessDataResult<BoardViewDto>(result) : new ErrorDataResult<BoardViewDto>("Pano bulunamadı.");
         }
 
-        public IDataResult<List<BoardViewDto>> GetAll(int companyId, int userId)
+        public IDataResult<List<BoardViewDto>> GetAll(int workspaceId, int userId)
         {
-            var result = _boardRepository.GetAllBoards(companyId, userId);
+            var result = _boardRepository.GetAllBoards(workspaceId, userId);
             return (!(result == null || !result.Any())) ? new SuccessDataResult<List<BoardViewDto>>(result) : new ErrorDataResult<List<BoardViewDto>>("Bu şirkete bağlı pano yok.");
         }
 
@@ -65,7 +65,7 @@ namespace Business.Concretes
             var updatedBoard = _boardRepository.Get(p => p.Id.Equals(board.Id));
             if (updatedBoard == null) return new ErrorResult("Güncellenecek pano bulunamadı.");
 
-            updatedBoard.Name = board.Name;
+            updatedBoard.Name = board.Name!;
             updatedBoard.PrivateToWorkspaceMember = board.PrivateToProjectMembers;
             updatedBoard.EndDate = board.EndDate;
             _boardRepository.Update(updatedBoard);

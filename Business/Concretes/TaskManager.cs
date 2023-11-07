@@ -87,7 +87,7 @@ namespace Business.Concretes
         public IDataResult<TaskViewDto> GetById(int taskId)
         {
             var result = _taskRepository.GetTaskByTaskId(taskId);
-            return (result != null) ? new SuccessDataResult<TaskViewDto>(result) : new ErrorDataResult<TaskViewDto>("Görev bulunamadı");
+            return (result != null) ? new SuccessDataResult<TaskViewDto>(result) : new ErrorDataResult<TaskViewDto>("Görev bulunamadı.");
         }
 
         public IResult Update(EditTaskDto taskDto)
