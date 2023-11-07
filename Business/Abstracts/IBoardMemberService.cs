@@ -1,14 +1,15 @@
 ﻿using Core.Utilities.Results.Abstracts;
 using Entities.Concretes;
+using Entities.Dtos.Board;
 
 namespace Business.Abstracts
 {
     public interface IBoardMemberService
     {
-        IResult Add(BoardMember boardMember);
+        IResult Add(List<BoardMember> boardMembers);
         IResult Delete(int boardMemberId);
-        IResult Update(BoardMember boardMember);
-        IDataResult<List<BoardMember>> GetAll();
-        IDataResult<BoardMember> Get(int boardMemberId);
+        IResult DeleteAll(List<BoardMember> boardMembers);
+        IDataResult<List<BoardMember>> GetAllByBoardId(int boardId);
+        IDataResult<List<BoardMemberViewDto>> GetAllByBoardIdWithUsers(int boardId);
     }
 }

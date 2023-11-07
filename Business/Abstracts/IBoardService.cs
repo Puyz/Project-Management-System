@@ -8,7 +8,7 @@ namespace Business.Abstracts
     {
         IResult Add(Board board);
         IResult Delete(int boardId);
-        IResult Update(Board board);
+        IResult Update(EditBoardDto board);
         IDataResult<List<BoardViewDto>> GetAll(int workspaceId, int userId);
         IDataResult<BoardViewDto> Get(int boardId);
     }

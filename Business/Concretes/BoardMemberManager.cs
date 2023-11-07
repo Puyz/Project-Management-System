@@ -1,7 +1,9 @@
 ﻿using Business.Abstracts;
 using Core.Utilities.Results.Abstracts;
+using Core.Utilities.Results.Concretes;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using Entities.Dtos.Board;
 
 namespace Business.Concretes
 {
@@ -11,29 +13,46 @@ namespace Business.Concretes
         public BoardMemberManager(IBoardMemberRepository boardMemberRepository) { 
             _boardMemberRepository = boardMemberRepository;
         }
-        public IResult Add(BoardMember boardMember)
+
+
+        public IResult Add(List<BoardMember> boardMembers)
         {
-            throw new NotImplementedException();
+            if ((boardMembers == null || !boardMembers.Any())) return new ErrorResult("Panoya atanacak kullanıcılar bulunamadı.");
+            foreach (var boardMember in boardMembers)
+            {
+                _boardMemberRepository.Add(boardMember);
+            }
+            return new SuccessResult("Panoya kullanıcılar atandı.");
         }
 
         public IResult Delete(int boardMemberId)
         {
-            throw new NotImplementedException();
+            var result = _boardMemberRepository.Get(p => p.Id.Equals(boardMemberId));
+            if (result == null) return new ErrorResult("Silmek için panoya atanmış kullanıcı bulunamadı.");
+            _boardMemberRepository.Delete(result);
+            return new SuccessResult("Panoya atanmış kullanıcı kaldırıldı.");
         }
 
-        public IDataResult<BoardMember> Get(int boardMemberId)
+        public IResult DeleteAll(List<BoardMember> boardMembers)
         {
-            throw new NotImplementedException();
+            if ((boardMembers == null || !boardMembers.Any())) return new ErrorResult("Silmek için panoya atanmış kullanıcılar bulunamadı.");
+            foreach (var boardMember in boardMembers)
+            {
+                Delete(boardMember.Id);
+            }
+            return new SuccessResult();
         }
 
-        public IDataResult<List<BoardMember>> GetAll()
+        public IDataResult<List<BoardMember>> GetAllByBoardId(int boardId)
         {
-            throw new NotImplementedException();
+            var result = _boardMemberRepository.GetAll(p => p.BoardId.Equals(boardId));
+            return new SuccessDataResult<List<BoardMember>>(result);
         }
 
-        public IResult Update(BoardMember boardMember)
+        public IDataResult<List<BoardMemberViewDto>> GetAllByBoardIdWithUsers(int boardId)
         {
-            throw new NotImplementedException();
+            var result = _boardMemberRepository.GetAllByBoardIdWithUsers(boardId);
+            return new SuccessDataResult<List<BoardMemberViewDto>>(result);
         }
     }
 }
