@@ -48,6 +48,16 @@ namespace Business.Concretes
             return new SuccessResult("Pano silindi.");
         }
 
+        public IResult DeleteAll(List<Board> boards)
+        {
+            if(boards == null || !boards.Any()) { return new ErrorResult("Silinecek panolar bulunamadı."); }
+            foreach (var board in boards)
+            {
+                Delete(board.Id);
+            }
+            return new SuccessResult();
+        }
+
         public IDataResult<BoardViewDto> Get(int boardId)
         {
             var result = _boardRepository.GetBoard(boardId);
@@ -58,6 +68,12 @@ namespace Business.Concretes
         {
             var result = _boardRepository.GetAllBoards(workspaceId, userId);
             return (!(result == null || !result.Any())) ? new SuccessDataResult<List<BoardViewDto>>(result) : new ErrorDataResult<List<BoardViewDto>>("Bu şirkete bağlı pano yok.");
+        }
+
+        public IDataResult<List<Board>> GetAllByWorkspaceId(int workspaceId)
+        {
+            var result = _boardRepository.GetAll(b => b.WorkspaceId.Equals(workspaceId));
+            return new SuccessDataResult<List<Board>>(result);
         }
 
         public IResult Update(EditBoardDto board)
