@@ -9,7 +9,7 @@ namespace Business.Concretes
 {
     public class BoardManager : IBoardService
     {
-        // test2
+        // test23
         private readonly IBoardRepository _boardRepository;
         private readonly ITaskListService _taskListService;
         private readonly IBoardMemberService _boardMemberService;
