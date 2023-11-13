@@ -14,7 +14,7 @@ namespace WebAPI.Controllers
             _boardService = boardService;
         }
 
-        [HttpGet("GetAll")]
+        [HttpGet("getall")]
         public IActionResult GetAll(int workspaceId, int userId)
         {
             var result = _boardService.GetAll(workspaceId, userId);

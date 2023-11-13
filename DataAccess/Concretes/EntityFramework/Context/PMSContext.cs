@@ -11,7 +11,7 @@ namespace DataAccess.Concretes.EntityFramework.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("server=localhost;database=project_management_system;user=puyz;password=Puyz123.");
+            optionsBuilder.UseMySQL("server=localhost;database=project_management_system;user=root;password=Puyz123.");
         }
 
         public DbSet<User> Users { get; set; }
