@@ -8,6 +8,7 @@ namespace Business.Concretes
     public class OperationClaimManager : IOperationClaimService
     {
         private readonly IOperationClaimRepository _operationClaimRepository;
+
         public OperationClaimManager(IOperationClaimRepository operationClaimRepository)
         {
             _operationClaimRepository = operationClaimRepository;
@@ -23,6 +24,11 @@ namespace Business.Concretes
         }
 
         public IDataResult<List<OperationClaim>> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<OperationClaim> GetById(int operationClaimId)
         {
             throw new NotImplementedException();
         }

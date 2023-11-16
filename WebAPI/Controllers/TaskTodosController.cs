@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Business.Abstracts;
+using Entities.Concretes;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebAPI.Controllers
 {
@@ -12,7 +9,41 @@ namespace WebAPI.Controllers
     [ApiController]
     public class TaskTodosController : ControllerBase
     {
-        
+        private readonly ITaskTodoService _taskTodoService;
+
+        public TaskTodosController(ITaskTodoService taskTodoService)
+        {
+            _taskTodoService = taskTodoService;
+        }
+
+        [HttpPost("add")]
+        public IActionResult Add([FromBody] TaskTodo taskTodo)
+        {
+            var result = _taskTodoService.Add(taskTodo);
+
+            return (result.Success) ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpDelete("delete")]
+        public IActionResult Delete(int id)
+        {
+            var result = _taskTodoService.Delete(id);
+            return (result.Success) ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpPut("update")]
+        public IActionResult Update([FromBody] TaskTodo taskTodo)
+        {
+            var result = _taskTodoService.Update(taskTodo);
+            return (result.Success) ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpPut("change")]
+        public IActionResult Change(int id, Boolean state)
+        {
+            var result = _taskTodoService.Change(id, state);
+            return (result.Success) ? Ok(result) : BadRequest(result);
+        }
     }
 }
 

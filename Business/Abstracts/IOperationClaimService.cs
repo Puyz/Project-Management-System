@@ -9,5 +9,6 @@ namespace Business.Abstracts
         IResult Delete(int operationClaimId);
         IResult Update(OperationClaim operationClaim);
         IDataResult<List<OperationClaim>> GetAll();
+        IDataResult<OperationClaim> GetById(int operationClaimId);
     }
 }

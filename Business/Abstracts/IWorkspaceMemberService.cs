@@ -10,7 +10,7 @@ namespace Business.Abstracts
         IResult Delete(int workspaceMemberId);
         IResult DeleteAll(List<WorkspaceMember> workspaceMembers);
         IDataResult<List<WorkspaceMember>> GetAllByWorkspaceId(int workspaceId);
-        IDataResult<List<WorkspaceMemberViewDto>> GetAllByWorkspaceIdWithUsers(int boardId);
+        IDataResult<List<WorkspaceMemberViewDto>> GetAllByWorkspaceIdWithUsers(int workspaceId);
 
     }
 }
