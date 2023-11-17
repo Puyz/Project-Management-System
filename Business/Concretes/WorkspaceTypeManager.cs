@@ -45,6 +45,7 @@ namespace Business.Concretes
             var result = _workspaceTypeRepository.Get(wt => wt.Id.Equals(workspaceType.Id));
             if (result == null) return new ErrorResult("Güncellemek istenen çalışma alanı türü bulunamadı.");
 
+            result.Name = workspaceType.Name;
             _workspaceTypeRepository.Update(result);
             return new SuccessResult("Çalışma alanı türü güncellendi.");
         }

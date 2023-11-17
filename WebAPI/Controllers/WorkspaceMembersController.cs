@@ -36,7 +36,7 @@ namespace WebAPI.Controllers
             return (result.Success) ? Ok(result) : BadRequest(result);
         }
 
-        [HttpPut("delete")]
+        [HttpDelete("delete")]
         public IActionResult Delete(int workspaceMemberId)
         {
             var result = _workspaceMemberService.Delete(workspaceMemberId);

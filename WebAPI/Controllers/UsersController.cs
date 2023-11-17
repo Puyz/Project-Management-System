@@ -26,7 +26,7 @@ namespace WebAPI.Controllers
             return (result.Success) ? Ok(result) : BadRequest(result);
         }
 
-        [HttpPost("update")]
+        [HttpPut("update")]
         public IActionResult Update(User user)
         {
             var result = _userService.Update(user);

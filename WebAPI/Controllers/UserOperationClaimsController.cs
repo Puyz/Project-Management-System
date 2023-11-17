@@ -21,13 +21,13 @@ namespace WebAPI.Controllers
             var result = _userOperationClaimService.Add(userOperationClaim);
             return (result.Success) ? Ok(result) : BadRequest(result);
         }
-        [HttpPost("update")]
+        [HttpPut("update")]
         public IActionResult Update(UserOperationClaim userOperationClaim)
         {
             var result = _userOperationClaimService.Update(userOperationClaim);
             return (result.Success) ? Ok(result) : BadRequest(result);
         }
-        [HttpPost("delete")]
+        [HttpDelete("delete")]
         public IActionResult Delete(int userOperationClaimId)
         {
             var result = _userOperationClaimService.Delete(userOperationClaimId);

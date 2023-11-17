@@ -22,21 +22,21 @@ namespace WebAPI.Controllers
             return (result.Success) ? Ok(result) : BadRequest(result);
         }
 
-        [HttpGet("add")]
+        [HttpPost("add")]
         public IActionResult Add(Workspace workspace)
         {
             var result = _workspaceService.Add(workspace);
             return (result.Success) ? Ok(result) : BadRequest(result);
         }
 
-        [HttpGet("delete")]
+        [HttpDelete("delete")]
         public IActionResult Delete(int workspaceId)
         {
             var result = _workspaceService.Delete(workspaceId);
             return (result.Success) ? Ok(result) : BadRequest(result);
         }
 
-        [HttpGet("update")]
+        [HttpPut("update")]
         public IActionResult Update(Workspace workspace)
         {
             var result = _workspaceService.Update(workspace);
