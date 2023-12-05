@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
+using Business.BusinessAspects.Autofac;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Entities.Concretes;
 using Core.Utilities.Results.Abstracts;
 using Core.Utilities.Results.Concretes;
@@ -19,6 +22,8 @@ namespace Business.Concretes
             _mapper = mapper;
         }
 
+        [SecuredOperation("admin")]
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
         {
             _userRepository.Add(user);
