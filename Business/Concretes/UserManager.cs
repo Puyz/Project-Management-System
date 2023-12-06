@@ -2,6 +2,7 @@
 using Business.Abstracts;
 using Business.BusinessAspects.Autofac;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.Entities.Concretes;
 using Core.Utilities.Results.Abstracts;
@@ -23,13 +24,15 @@ namespace Business.Concretes
 
         
         [ValidationAspect(typeof(UserValidator))]
+        [CacheRemoveAspect("IUserService.Get")]
         public IResult Add(User user)
         {
             _userRepository.Add(user);
             return new SuccessResult("Kullanıcı oluşturuldu.");
         }
 
-        [SecuredOperation("admin, mod")]
+        [CacheAspect]
+        //[SecuredOperation("admin, mod")]
         public IDataResult<List<UserViewDto>> GetAll()
         {
             var result = _userRepository.GetAll();
@@ -71,6 +74,7 @@ namespace Business.Concretes
             return new SuccessDataResult<UserViewDto>(result);
         }
 
+        [CacheRemoveAspect("IUserService.Get")]
         public IResult Update(User user)
         {
             _userRepository.Update(user);

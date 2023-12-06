@@ -29,6 +29,9 @@
     <None Remove="Extensions\" />
     <None Remove="Utilities\IoC\" />
     <None Remove="DependencyResolvers\" />
+    <None Remove="Aspects\Autofac\Caching\" />
+    <None Remove="Aspects\Autofac\Transaction\" />
+    <None Remove="Aspects\Autofac\Performance\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Aspects\" />
@@ -42,5 +45,8 @@
     <Folder Include="Extensions\" />
     <Folder Include="Utilities\IoC\" />
     <Folder Include="DependencyResolvers\" />
+    <Folder Include="Aspects\Autofac\Caching\" />
+    <Folder Include="Aspects\Autofac\Transaction\" />
+    <Folder Include="Aspects\Autofac\Performance\" />
   </ItemGroup>
 </Project>

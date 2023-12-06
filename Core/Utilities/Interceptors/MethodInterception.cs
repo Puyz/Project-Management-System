@@ -11,7 +11,7 @@ namespace Core.Utilities.Interceptors
         //işlem başarısız ise çalışır
         protected virtual void OnException(IInvocation invocation, Exception e) { }
         //işlem başarılıysa çalışır
-        protected virtual void OnSucces(IInvocation invocation) { }
+        protected virtual void OnSuccess(IInvocation invocation) { }
 
         public override void Intercept(IInvocation invocation)
         {
@@ -31,7 +31,7 @@ namespace Core.Utilities.Interceptors
             {
                 if (isSucces)//işlem başarılıysa
                 {
-                    OnSucces(invocation);//devam etsin
+                    OnSuccess(invocation);//devam etsin
                 }
             }
             OnAfter(invocation);//tüm işlemlerden sonra tekrar döndür

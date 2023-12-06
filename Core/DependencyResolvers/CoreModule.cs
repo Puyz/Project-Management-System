@@ -1,4 +1,5 @@
-﻿using Core.CrossCuttingConcerns.Caching;
+﻿using System.Diagnostics;
+using Core.CrossCuttingConcerns.Caching;
 using Core.CrossCuttingConcerns.Caching.Microsoft;
 using Core.Utilities.IoC;
 using Microsoft.AspNetCore.Http;
@@ -14,6 +15,8 @@ namespace Core.DependencyResolvers
 
             serviceCollection.AddMemoryCache(); // IMemoryCache (Microsoft)
             serviceCollection.AddSingleton<ICacheManager, MemoryCacheManager>();
+
+            serviceCollection.AddSingleton<Stopwatch>();
         }
     }
 }
