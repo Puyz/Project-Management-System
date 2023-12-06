@@ -5,8 +5,10 @@ using Business.Concretes;
 using Business.File;
 using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
+using Core.Utilities.Security.JWT;
 using DataAccess.Abstracts;
 using DataAccess.Concretes.EntityFramework;
+using Microsoft.AspNetCore.Http;
 
 namespace Business.DependencyResolves.Autofac
 {
@@ -14,6 +16,11 @@ namespace Business.DependencyResolves.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
+
+            builder.RegisterType<AuthManager>().As<IAuthService>();
+
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+
             builder.RegisterType<FileManager>().As<IFileService>();
 
             builder.RegisterType<BoardMemberManager>().As<IBoardMemberService>();

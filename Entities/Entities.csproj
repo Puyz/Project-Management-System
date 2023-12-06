@@ -10,4 +10,10 @@
     <ProjectReference Include="..\Core\Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Dtos\Auth\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dtos\Auth\" />
+  </ItemGroup>
 </Project>

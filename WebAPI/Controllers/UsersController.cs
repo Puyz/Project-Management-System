@@ -16,16 +16,6 @@ namespace WebAPI.Controllers
             _userService = userService;
         }
 
-        [HttpPost("add")]
-        public IActionResult Add(User user)
-        {
-            var userExist = _userService.UserExists(user.Email);
-            if (!userExist.Success) return BadRequest(userExist.Message);
-
-            var result = _userService.Add(user);
-            return (result.Success) ? Ok(result) : BadRequest(result);
-        }
-
         [HttpPut("update")]
         public IActionResult Update(User user)
         {

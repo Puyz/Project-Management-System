@@ -31,7 +31,7 @@ namespace Business.BusinessAspects.Autofac
                     return;
                 }
             }
-            throw new Exception("Yetki reddedildi");
+            throw new Exception("Yetkiniz yok");
         }
     }
 }

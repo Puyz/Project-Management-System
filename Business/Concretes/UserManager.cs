@@ -14,15 +14,14 @@ namespace Business.Concretes
     public class UserManager : IUserService
     {
         private readonly IUserRepository _userRepository;
-        private readonly IMapper _mapper;
+      
 
-        public UserManager(IUserRepository userRepository, IMapper mapper) 
+        public UserManager(IUserRepository userRepository) 
         {
             _userRepository = userRepository;
-            _mapper = mapper;
         }
 
-        [SecuredOperation("admin")]
+        
         [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
         {
@@ -30,26 +29,29 @@ namespace Business.Concretes
             return new SuccessResult("Kullanıcı oluşturuldu.");
         }
 
+        [SecuredOperation("admin")]
         public IDataResult<List<UserViewDto>> GetAll()
         {
             var result = _userRepository.GetAll();
-            var mapperResult = _mapper.Map<List<UserViewDto>>(result);
+
+            var mapperResult = UserViewsMapper(result);
 
             return new SuccessDataResult<List<UserViewDto>>(mapperResult);
         }
 
-        public IDataResult<UserViewDto> GetByMail(string email)
+        public IDataResult<User> GetByMail(string email)
         {
-            var result = _userRepository.Get(user => user.Email.Equals(email));
-            var mapperResult = _mapper.Map<UserViewDto>(result);
+            var result = _userRepository.Get(user => user.Email!.Equals(email));
 
-            return new SuccessDataResult<UserViewDto>(mapperResult);
+            if (result == null) return new ErrorDataResult<User>("Kullanıcı bulunamadı");
+
+            return new SuccessDataResult<User>(result);
         }
 
         public IDataResult<List<UserViewDto>> GetAllByName(string name)
         {
-            var result = _userRepository.GetAll(user => user.Name.Contains(name));
-            var mapperResult = _mapper.Map<List<UserViewDto>>(result);
+            var result = _userRepository.GetAll(user => user.Name!.Contains(name));
+            var mapperResult = UserViewsMapper(result);
 
             return new SuccessDataResult<List<UserViewDto>>(mapperResult);
         }
@@ -62,10 +64,11 @@ namespace Business.Concretes
 
         public IDataResult<UserViewDto> GetUserById(int id)
         {
-            var result = _userRepository.Get(user => user.Id.Equals(id));
-            var mapperResult = _mapper.Map<UserViewDto>(result);
+            var user = _userRepository.Get(user => user.Id.Equals(id));
 
-            return new SuccessDataResult<UserViewDto>(mapperResult);
+            var result = UserViewMapper(user);
+
+            return new SuccessDataResult<UserViewDto>(result);
         }
 
         public IResult Update(User user)
@@ -74,10 +77,38 @@ namespace Business.Concretes
             return new SuccessResult("Kullanıcı güncellendi.");
         }
 
-        public IResult UserExists(string email)
+
+        private static UserViewDto UserViewMapper(User user)
         {
-            var result = _userRepository.Get(user => user.Email.Equals(email));
-            return (result != null) ? new SuccessResult() : new ErrorResult();
+            return new UserViewDto
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Email = user.Email,
+                Image = user.Image,
+                CreatedDate = user.CreatedDate
+            };
         }
+
+        private static List<UserViewDto> UserViewsMapper(List<User> users)
+        {
+            var result = new List<UserViewDto>();
+            foreach (var user in users)
+            {
+                var dto = new UserViewDto
+                {
+                    Id = user.Id,
+                    Name = user.Name,
+                    Email = user.Email,
+                    Image = user.Image,
+                    CreatedDate = user.CreatedDate
+                };
+                result.Add(dto);
+            }
+
+            return result;
+            
+        }
+
     }
 }
