@@ -29,7 +29,7 @@ namespace Business.Concretes
             return new SuccessResult("Kullanıcı oluşturuldu.");
         }
 
-        [SecuredOperation("admin")]
+        [SecuredOperation("admin, mod")]
         public IDataResult<List<UserViewDto>> GetAll()
         {
             var result = _userRepository.GetAll();
