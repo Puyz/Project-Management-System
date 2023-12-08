@@ -32,7 +32,7 @@ namespace Business.Concretes
         }
 
         [CacheAspect]
-        //[SecuredOperation("admin, mod")]
+        [SecuredOperation("admin, mod")]
         public IDataResult<List<UserViewDto>> GetAll()
         {
             var result = _userRepository.GetAll();

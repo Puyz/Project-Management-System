@@ -30,13 +30,22 @@ namespace WebAPI.Controllers
                 return BadRequest(userToLogin.Message);
             }
 
-            var result = _authService.CreateAccessToken(userToLogin.Data);
-            if (result.Success)
+            var tokenResult = _authService.CreateAccessToken(userToLogin.Data);
+            if (tokenResult.Success)
             {
-                return Ok(result.Data);
+                var result = new
+                {
+                    userToLogin.Data.Name,
+                    userToLogin.Data.Email,
+                    userToLogin.Data.Image,
+                    tokenResult.Data.Token,
+                    tokenResult.Data.Expiration
+
+    };
+                return Ok(result);
             }
 
-            return BadRequest(result.Message);
+            return BadRequest(tokenResult.Message);
         }
 
         [HttpPost("register")]
