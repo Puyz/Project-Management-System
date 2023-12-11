@@ -13,15 +13,20 @@ namespace DataAccess.Concretes.EntityFramework
             {
                 var result = (from workspace in context.Workspaces
                               join workspaceMember in context.WorkspaceMembers on workspace.Id equals workspaceMember.WorkspaceId
+                              where workspace.CreatedUserId == userId || workspaceMember.UserId == userId
                               select new Workspace
                               {
                                   Id = workspace.Id,
                                   WorkspaceTypeId = workspace.WorkspaceTypeId,
+                                  CreatedUserId = workspace.CreatedUserId,
                                   Name = workspace.Name,
                                   Description = workspace.Description
                               }).ToList();
                 return result;
             }
+
+
+
 
         }
     }
