@@ -82,7 +82,7 @@ namespace Business.Concretes
             if (updatedBoard == null) return new ErrorResult("Güncellenecek pano bulunamadı.");
 
             updatedBoard.Name = board.Name!;
-            updatedBoard.PrivateToWorkspaceMember = board.PrivateToProjectMembers;
+            updatedBoard.PrivateToWorkspaceMember = board.PrivateToWorkspaceMember;
             updatedBoard.EndDate = board.EndDate;
             _boardRepository.Update(updatedBoard);
             return new SuccessResult("Pano güncellendi.");

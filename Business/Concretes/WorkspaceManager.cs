@@ -51,6 +51,13 @@ namespace Business.Concretes
             return new SuccessDataResult<List<Workspace>>(result);
         }
 
+        public IDataResult<Workspace> GetById(int workspaceId)
+        {
+            var result = _workspaceRepository.Get(w => w.Id.Equals(workspaceId));
+            if (result == null) return new ErrorDataResult<Workspace>("Çalışma alanı bulunamadı.");
+            return new SuccessDataResult<Workspace>(result);
+        }
+
         public IResult Update(Workspace workspace)
         {
             var result = _workspaceRepository.Get(w => w.Id.Equals(workspace.Id));

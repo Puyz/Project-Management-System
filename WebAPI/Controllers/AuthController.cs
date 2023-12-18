@@ -35,6 +35,7 @@ namespace WebAPI.Controllers
             {
                 var result = new
                 {
+                    userToLogin.Data.Id,
                     userToLogin.Data.Name,
                     userToLogin.Data.Email,
                     userToLogin.Data.Image,

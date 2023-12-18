@@ -9,6 +9,7 @@ namespace Business.Abstracts
         IResult Delete(int workspaceId);
         IResult Update(Workspace workspace);
         IDataResult<List<Workspace>> GetAllByUserId(int userId);
+        IDataResult<Workspace> GetById(int workspaceId);
 
     }
 }

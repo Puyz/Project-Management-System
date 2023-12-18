@@ -11,17 +11,32 @@ namespace DataAccess.Concretes.EntityFramework
         {
             using (var context = new PMSContext())
             {
-                var result = (from workspace in context.Workspaces
-                              join workspaceMember in context.WorkspaceMembers on workspace.Id equals workspaceMember.WorkspaceId
-                              where workspace.CreatedUserId == userId || workspaceMember.UserId == userId
-                              select new Workspace
-                              {
-                                  Id = workspace.Id,
-                                  WorkspaceTypeId = workspace.WorkspaceTypeId,
-                                  CreatedUserId = workspace.CreatedUserId,
-                                  Name = workspace.Name,
-                                  Description = workspace.Description
-                              }).ToList();
+                var workspaces = (from workspace in context.Workspaces
+                                  where workspace.CreatedUserId == userId
+                                  select new Workspace
+                                  {
+                                      Id = workspace.Id,
+                                      WorkspaceTypeId = workspace.WorkspaceTypeId,
+                                      CreatedUserId = workspace.CreatedUserId,
+                                      Name = workspace.Name,
+                                      Description = workspace.Description
+                                  }).ToList();
+
+                var memberWorkspaces = (from workspaceMember in context.WorkspaceMembers
+                                        join workspace in context.Workspaces on workspaceMember.WorkspaceId equals workspace.Id
+                                        where workspaceMember.UserId == userId
+                                        select new Workspace
+                                        {
+                                            Id = workspace.Id,
+                                            WorkspaceTypeId = workspace.WorkspaceTypeId,
+                                            CreatedUserId = workspace.CreatedUserId,
+                                            Name = workspace.Name,
+                                            Description = workspace.Description
+                                        }).ToList();
+
+                var result = workspaces.Concat(memberWorkspaces).ToList();
+
+
                 return result;
             }
 

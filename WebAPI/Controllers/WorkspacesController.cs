@@ -22,6 +22,13 @@ namespace WebAPI.Controllers
             return (result.Success) ? Ok(result) : BadRequest(result);
         }
 
+        [HttpGet("getbyid")]
+        public IActionResult GetById(int workspaceId)
+        {
+            var result = _workspaceService.GetById(workspaceId);
+            return (result.Success) ? Ok(result) : BadRequest(result);
+        }
+
         [HttpPost("add")]
         public IActionResult Add(Workspace workspace)
         {
