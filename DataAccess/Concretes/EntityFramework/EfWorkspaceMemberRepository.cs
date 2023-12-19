@@ -2,7 +2,6 @@
 using DataAccess.Abstracts;
 using DataAccess.Concretes.EntityFramework.Context;
 using Entities.Concretes;
-using Entities.Dtos.Board;
 using Entities.Dtos.Workspace;
 
 namespace DataAccess.Concretes.EntityFramework
@@ -14,7 +13,7 @@ namespace DataAccess.Concretes.EntityFramework
             using (var context = new PMSContext())
             {
                 var result = (from workspaceMember in context.WorkspaceMembers
-                              where workspaceMember.Id== workspaceId
+                              where workspaceMember.WorkspaceId == workspaceId
                               join user in context.Users on workspaceMember.UserId equals user.Id
                               select new WorkspaceMemberViewDto
                               {

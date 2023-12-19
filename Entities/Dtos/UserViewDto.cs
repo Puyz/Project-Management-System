@@ -1,6 +1,8 @@
-﻿namespace Entities.Dtos
+﻿using Core.Entities.Abstracts;
+
+namespace Entities.Dtos
 {
-    public class UserViewDto
+    public class UserViewDto : IDto
     {
         public int Id { get; set; }
         public string? Name { get; set; }

@@ -1,7 +1,9 @@
-﻿namespace Entities.Dtos
+﻿using Core.Entities.Abstracts;
+
+namespace Entities.Dtos
 {
-	public class UserOperationClaimDto
-	{
+	public class UserOperationClaimDto : IDto
+    {
         public int Id { get; set; }
         public int UserId { get; set; }
         public int OperationClaimId { get; set; }

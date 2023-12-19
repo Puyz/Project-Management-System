@@ -1,6 +1,8 @@
-﻿namespace Entities.Dtos.Workspace
+﻿using Core.Entities.Abstracts;
+
+namespace Entities.Dtos.Workspace
 {
-    public class WorkspaceMemberViewDto
+    public class WorkspaceMemberViewDto : IDto
     {
         public int Id { get; set; }
         public int WorkspaceId { get; set; }

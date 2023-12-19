@@ -1,4 +1,5 @@
-﻿namespace Entities.Dtos.Task
+﻿
+namespace Entities.Dtos.Task
 {
     public class EditTaskDto : AddTaskDto
     {

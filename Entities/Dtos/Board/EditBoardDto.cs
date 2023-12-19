@@ -1,6 +1,8 @@
-﻿namespace Entities.Dtos.Board
+﻿using Core.Entities.Abstracts;
+
+namespace Entities.Dtos.Board
 {
-    public class EditBoardDto
+    public class EditBoardDto : IDto
     {
         public int Id { get; set; }
         public string? Name { get; set; }

@@ -1,6 +1,8 @@
-﻿namespace Entities.Dtos.Task
+﻿using Core.Entities.Abstracts;
+
+namespace Entities.Dtos.Task
 {
-    public class TaskMemberDto
+    public class TaskMemberDto : IDto
     {
         public int Id { get; set; }
         public long UserId { get; set; }

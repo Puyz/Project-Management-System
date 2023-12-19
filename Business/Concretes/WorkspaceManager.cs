@@ -3,6 +3,7 @@ using Core.Utilities.Results.Abstracts;
 using Core.Utilities.Results.Concretes;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using Entities.Dtos.Workspace;
 
 namespace Business.Concretes
 {
@@ -51,11 +52,11 @@ namespace Business.Concretes
             return new SuccessDataResult<List<Workspace>>(result);
         }
 
-        public IDataResult<Workspace> GetById(int workspaceId)
+        public IDataResult<WorkspaceViewDto> GetById(int workspaceId)
         {
-            var result = _workspaceRepository.Get(w => w.Id.Equals(workspaceId));
-            if (result == null) return new ErrorDataResult<Workspace>("Çalışma alanı bulunamadı.");
-            return new SuccessDataResult<Workspace>(result);
+            var result = _workspaceRepository.GetById(workspaceId);
+            if (result == null) return new ErrorDataResult<WorkspaceViewDto>("Çalışma alanı bulunamadı.");
+            return new SuccessDataResult<WorkspaceViewDto>(result);
         }
 
         public IResult Update(Workspace workspace)

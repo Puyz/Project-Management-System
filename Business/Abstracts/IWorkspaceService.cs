@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results.Abstracts;
 using Entities.Concretes;
+using Entities.Dtos.Workspace;
 
 namespace Business.Abstracts
 {
@@ -9,7 +10,7 @@ namespace Business.Abstracts
         IResult Delete(int workspaceId);
         IResult Update(Workspace workspace);
         IDataResult<List<Workspace>> GetAllByUserId(int userId);
-        IDataResult<Workspace> GetById(int workspaceId);
+        IDataResult<WorkspaceViewDto> GetById(int workspaceId);
 
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace Entities.Dtos.Task
+﻿using Core.Entities.Abstracts;
+
+namespace Entities.Dtos.Task
 {
-    public class TaskCommentViewDto
+    public class TaskCommentViewDto : IDto
     {
         public int Id { get; set; }
         public UserViewDto User { get; set; }

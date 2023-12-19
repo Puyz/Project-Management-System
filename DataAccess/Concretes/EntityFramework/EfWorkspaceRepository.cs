@@ -1,7 +1,10 @@
 ﻿using Core.DataAccess.EntityFramework;
+using Core.Entities.Concretes;
 using DataAccess.Abstracts;
 using DataAccess.Concretes.EntityFramework.Context;
 using Entities.Concretes;
+using Entities.Dtos;
+using Entities.Dtos.Workspace;
 
 namespace DataAccess.Concretes.EntityFramework
 {
@@ -43,6 +46,31 @@ namespace DataAccess.Concretes.EntityFramework
 
 
 
+        }
+
+        public WorkspaceViewDto GetById(int workspaceId)
+        {
+            using (var context = new PMSContext())
+            {
+                var result = (from workspace in context.Workspaces
+                              where workspace.Id == workspaceId
+                              join user in context.Users on workspace.CreatedUserId equals user.Id
+                              select new WorkspaceViewDto
+                              {
+                                  Id = workspace.Id,
+                                  WorkspaceTypeId = workspace.WorkspaceTypeId,
+                                  CreatedUser = new UserViewDto
+                                  {
+                                      Id = user.Id,
+                                      Email = user.Email,
+                                      Image = user.Image,
+                                      Name = user.Name,
+                                  },
+                                  Name = workspace.Name,
+                                  Description = workspace.Description
+                              }).SingleOrDefault();
+                return result;
+            }
         }
     }
 }

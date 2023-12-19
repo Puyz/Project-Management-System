@@ -1,6 +1,8 @@
-﻿namespace Entities.Dtos.Board
+﻿using Core.Entities.Abstracts;
+
+namespace Entities.Dtos.Board
 {
-    public class BoardMemberViewDto
+    public class BoardMemberViewDto : IDto
     {
         public int Id { get; set; }
         public int UserId { get; set; }

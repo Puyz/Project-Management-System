@@ -1,6 +1,8 @@
-﻿namespace Entities.Dtos.Task
+﻿using Core.Entities.Abstracts;
+
+namespace Entities.Dtos.Task
 {
-    public class TaskOrderEditDto
+    public class TaskOrderEditDto : IDto
     {
         public int Id { get; set; }
         public int TaskListId { get; set; }

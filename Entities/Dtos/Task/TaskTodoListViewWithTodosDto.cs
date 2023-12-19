@@ -1,8 +1,9 @@
-﻿using Entities.Concretes;
+﻿using Core.Entities.Abstracts;
+using Entities.Concretes;
 
 namespace Entities.Dtos.Task
 {
-    public class TaskTodoListViewWithTodosDto
+    public class TaskTodoListViewWithTodosDto : IDto
     {
         public int Id { get; set; }
         public string Title { get; set; }

@@ -1,8 +1,9 @@
-﻿using Entities.Dtos.Task;
+﻿using Core.Entities.Abstracts;
+using Entities.Dtos.Task;
 
 namespace Entities.Dtos.TaskList
 {
-    public class TaskListViewDto
+    public class TaskListViewDto : IDto
     {
         public int Id { get; set; }
         public int BoardId { get; set; }

@@ -1,6 +1,8 @@
-﻿namespace Entities.Dtos.Task
+﻿using Core.Entities.Abstracts;
+
+namespace Entities.Dtos.Task
 {
-    public class TaskLabelDto
+    public class TaskLabelDto : IDto
     {
         public int Id { get; set; }
         public int LabelId { get; set; }
