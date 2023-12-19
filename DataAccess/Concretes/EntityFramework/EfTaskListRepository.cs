@@ -56,7 +56,7 @@ namespace DataAccess.Concretes.EntityFramework
                                                 .ToList()
 
                                   }).ToList()
-                              }).ToList();
+                              }).OrderBy(taskList => taskList.OrderNo).ToList();
 
                 return result;
             }

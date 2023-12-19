@@ -78,14 +78,19 @@ namespace Business.Concretes
             return new SuccessResult("Güncelleme işlemi başarılı.");
         }
 
-        public IResult UpdateOrder(TaskListEditOrderDto taskList)
+        public IResult UpdateOrder(TaskListUpdateOrderDto taskListUpdateOrder)
         {
-            var result = _taskListRepository.Get(p => p.Id.Equals(taskList.Id));
-            if (result == null) return new ErrorResult("Güncellenecek görev listesi bulunamadı.");
+            var result = _taskListRepository.Get(p => p.Id.Equals(taskListUpdateOrder.Id));
 
-            result.OrderNo = taskList.OrderNo;
+            if (result == null)
+                return new ErrorResult("Güncellenecek görev listesi bulunamadı.");
+
+            result.OrderNo = taskListUpdateOrder.OrderNo;
+
             _taskListRepository.Update(result);
+
             return new SuccessResult("İşlem başarılı.");
+
         }
     }
 }

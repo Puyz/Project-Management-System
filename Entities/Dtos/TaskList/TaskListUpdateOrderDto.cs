@@ -1,10 +1,10 @@
-﻿using Core.Entities.Abstracts;
-
+﻿using System;
 namespace Entities.Dtos.TaskList
 {
-    public class TaskListEditOrderDto : IDto
-    {
+	public class TaskListUpdateOrderDto
+	{
         public int Id { get; set; }
         public int OrderNo { get; set; }
     }
 }
+

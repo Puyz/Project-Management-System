@@ -10,7 +10,7 @@ namespace Business.Abstracts
         IResult Delete(int taskListId);
         IResult DeleteAll(List<TaskList> taskLists);
         IResult Update(TaskList taskList);
-        IResult UpdateOrder(TaskListEditOrderDto taskListEditOrderDto);
+        IResult UpdateOrder(TaskListUpdateOrderDto taskListUpdateOrder);
         IDataResult<List<TaskList>> GetAllByBoardId(int boardId);
         IDataResult<List<TaskListViewDto>> GetAllWithTasks(int boardId);
     }

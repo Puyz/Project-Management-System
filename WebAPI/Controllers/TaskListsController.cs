@@ -45,9 +45,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("updateorder")]
-        public IActionResult UpdateOrder([FromBody] TaskListEditOrderDto editOrder)
+        public IActionResult UpdateOrder([FromBody] TaskListUpdateOrderDto taskListUpdateOrderdto)
         {
-            var result = _taskListService.UpdateOrder(editOrder);
+            var result = _taskListService.UpdateOrder(taskListUpdateOrderdto);
             return (result.Success) ? Ok(result) : BadRequest(result);
         }
 
