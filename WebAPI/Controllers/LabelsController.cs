@@ -21,7 +21,7 @@ namespace WebAPI.Controllers
             return (result.Success) ? Ok(result) : BadRequest();
         }
 
-        [HttpDelete("delete/{labelId}")]
+        [HttpDelete("delete")]
         public IActionResult Delete(int labelId)
         {
             var result = _labelService.Delete(labelId);
@@ -35,7 +35,7 @@ namespace WebAPI.Controllers
             return (result.Success) ? Ok(result) : BadRequest();
         }
 
-        [HttpPost("getall")]
+        [HttpGet("getall")]
         public IActionResult GetAll()
         {
             var result = _labelService.GetAll();
